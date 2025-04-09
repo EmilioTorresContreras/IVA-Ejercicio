@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest,
     const data = { id: 9, name: 'Emilio', price: 100 }; // Datos de ejemplo
 
     // Llamar a la siguiente API (validar)
-    // Se puede llamar
+    // Se puede llamar directo a un funcion con RouterApp
     const validar = await fetch('http://localhost:3000/api/ejercicio1/validar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

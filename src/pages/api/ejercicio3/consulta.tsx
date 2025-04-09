@@ -14,7 +14,7 @@ type RequestData = {
     const data = {
       id,
       nombre_cliente: 'Emilio Torres', // Ejemplo
-      subtotal: 100, // Ejemplo
+      subtotal: 1500, // Ejemplo
       iva: 0, // Aún no calculado
       total: 0, // Aún no calculado
     };

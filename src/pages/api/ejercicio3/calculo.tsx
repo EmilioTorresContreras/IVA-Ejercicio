@@ -1,22 +1,6 @@
 
 import { consulta } from './consulta'; // Importamos la función de consulta
 
-type RequestData = {
-  id: number;
-  nombre_cliente: string;
-  subtotal: number;
-  iva: number;
-  total: number;
-};
-
-type ResponseBody = {
-  statusCode: number;
-  id: number;
-  name: string;
-  price: number;
-  price_iva: number;
-  total_price: number;
-};
 
 // Esta función se encarga de calcular, es decir, calcular el IVA y total con los datos obtenidos.
 export async function calcular(id: number) {

@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Recibimos los datos que fueron enviados desde la API anterior
-  const { id, name, price, price_iva, total_price } = req.body;
+  const { name, price, price_iva, total_price } = req.body;
   console.log('Request Body:', req.body);
 
   // Crear un mensaje con toda la información que hemos recibido

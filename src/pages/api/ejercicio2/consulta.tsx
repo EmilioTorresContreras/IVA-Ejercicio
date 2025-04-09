@@ -23,34 +23,29 @@ export default async function handler(
 
   const url = `${SUPABASE_URL}/rest/v1/facturas?id=eq.${userId}`;
 
-  try {
-    const respuesta = await fetch(url, { headers });
-    const data: Factura[] = await respuesta.json();
 
-    if (respuesta.status === 200 && data.length > 0) {
+  const respuesta = await fetch(url, { headers });
+  const data: Factura[] = await respuesta.json();
 
-      // Llamar a la siguiente API (validar)
-      const validar = await fetch('http://localhost:3000/api/ejercicio2/validar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+  if (respuesta.status === 200 && data.length > 0) {
 
-      const result = await validar.json();
-      res.status(200).json(result);
+    // Llamar a la siguiente API (validar)
+    const validar = await fetch('http://localhost:3000/api/ejercicio2/validar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await validar.json();
+    res.status(200).json(result);
 
 
 
-    } else {
-      res.status(respuesta.status).json({
-        statusCode: respuesta.status,
-        body: JSON.stringify({ error: 'No se encontró factura' }),
-      });
-    }
-  } catch (error: any) {
-    res.status(500).json({
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+  } else {
+    res.status(respuesta.status).json({
+      statusCode: respuesta.status,
+      body: JSON.stringify({ error: 'No se encontró factura' }),
     });
   }
+
 }
